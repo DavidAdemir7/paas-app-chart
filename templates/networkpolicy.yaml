@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ .Values.appName }}-isolation
+  labels:
+    app: {{ .Values.appName }}
+spec:
+  podSelector:
+    matchLabels:
+      app: {{ .Values.appName }}
+  policyTypes:
+    - Ingress
+  ingress:
+    # Permitir tráfico entre Pods del mismo tenant
+    - from:
+        - podSelector: {}
+
+    # Permitir el acceso desde el controlador Ingress
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: ingress-nginx

@@ -1,0 +1,11 @@
+appName: "modern-express"
+image: "modern-express:1.1"
+runtime: "nodejs"
+containerPort: 3000
+replicaCount: 1
+domain: "modern.paas.local"
+envSecret: "modern-env"
+autoscaling:
+  enabled: true
+  maxReplicas: 3
+  targetCPU: 70

@@ -1,0 +1,14 @@
+appName: "mi-web-service"
+image: "nginx:alpine"
+runtime: "static"
+containerPort: 80
+replicaCount: 2
+domain: "alpha.paas.local"
+
+# Nombre del Secret con las variables de entorno (lo crea la plataforma)
+envSecret: ""
+
+autoscaling:
+  enabled: true
+  maxReplicas: 8
+  targetCPU: 70

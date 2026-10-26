@@ -1,0 +1,11 @@
+appName: "legacy-laravel"
+image: "legacy-laravel:1.0"
+runtime: "php"
+containerPort: 8080
+replicaCount: 1
+domain: "legacy.paas.local"
+envSecret: "legacy-env"
+autoscaling:
+  enabled: true
+  maxReplicas: 3
+  targetCPU: 70
